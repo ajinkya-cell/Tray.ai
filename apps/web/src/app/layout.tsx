@@ -1,7 +1,7 @@
 import "@workspace/ui/globals.css";
 
 import { SanityLive } from "@workspace/sanity/live";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Geist_Mono } from "next/font/google";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { Suspense } from "react";
@@ -14,7 +14,8 @@ import { PreviewBar } from "@/components/preview-bar";
 import { Providers } from "@/components/providers";
 import { getNavigationData } from "@/lib/navigation";
 
-const fontSans = Geist({
+const fontSans = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -35,7 +36,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased`}
+        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased bg-[#0F172B] text-white`}
       >
         <Providers>
           <Navbar navbarData={nav.navbarData} settingsData={nav.settingsData} />

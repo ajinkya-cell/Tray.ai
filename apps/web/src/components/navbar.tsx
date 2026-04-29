@@ -199,7 +199,7 @@ export function Navbar({
             <ModeToggle />
             <SanityButtons
               buttonClassName="rounded-lg"
-              buttons={buttons || []}
+              buttons={(buttons || []) as Parameters<typeof SanityButtons>[0]["buttons"]}
               className="flex items-center gap-2"
             />
           </div>

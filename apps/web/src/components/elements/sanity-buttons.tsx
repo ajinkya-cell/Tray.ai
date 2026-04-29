@@ -15,21 +15,23 @@ type SanityButtonsProps = {
 function SanityButton({
   text,
   href,
-  variant = "default",
+  variant,
   openInNewTab,
   className,
-  ...props
-}: SanityButtonProps & ComponentProps<typeof Button>) {
+  size,
+}: SanityButtonProps & { className?: string; size?: "sm" | "lg" | "default" | "icon" }) {
+  const resolvedVariant = (variant ?? "default") as ComponentProps<typeof Button>["variant"];
+
   if (!href) {
     return <Button>Link Broken</Button>;
   }
 
   return (
     <Button
-      variant={variant}
-      {...props}
       asChild
       className={cn("rounded-[10px]", className)}
+      size={size}
+      variant={resolvedVariant}
     >
       <Link
         aria-label={`Navigate to ${text}`}
@@ -57,8 +59,8 @@ export function SanityButtons({
     <div className={cn("flex flex-col gap-4 sm:flex-row", className)}>
       {buttons.map((button) => (
         <SanityButton
-          key={`button-${button._key}`}
-          size={size}
+          key={`button-${button._key ?? "cta"}`}
+          size={size ?? undefined}
           {...button}
           className={buttonClassName}
         />

@@ -96,57 +96,101 @@ const buttonsFragment = /* groq */ `
   }
 `;
 
+// ─────────────────────────────────────────────
 // Page builder block fragments
-const ctaBlock = /* groq */ `
-  _type == "cta" => {
+// ─────────────────────────────────────────────
+
+const heroSectionBlock = /* groq */ `
+  _type == "heroSection" => {
     ...,
-    ${richTextFragment},
+    heading,
+    subheading,
     ${buttonsFragment},
-  }
-`;
-const imageLinkCardsBlock = /* groq */ `
-  _type == "imageLinkCards" => {
-    ...,
-    ${richTextFragment},
-    ${buttonsFragment},
-    "cards": array::compact(cards[]{
-      ...,
-      "openInNewTab": url.openInNewTab,
-      "href": select(
-        url.type == "internal" => url.internal->slug.current,
-        url.type == "external" => url.external,
-        url.href
-      ),
-      ${imageFragment},
-    })
+    ${imageFragment}
   }
 `;
 
-const heroBlock = /* groq */ `
-  _type == "hero" => {
+const logoStripBlock = /* groq */ `
+  _type == "logoStrip" => {
     ...,
-    ${imageFragment},
-    ${buttonsFragment},
-    ${richTextFragment}
+    "logos": logos[]{
+      _key,
+      ${imageFields}
+    }
   }
 `;
 
-const faqFragment = /* groq */ `
-  "faqs": array::compact(faqs[]->{
+const featureGridBlock = /* groq */ `
+  _type == "featureGrid" => {
+    ...,
     title,
-    _id,
-    _type,
-    ${richTextFragment}
-  })
+    "features": features[]{
+      _key,
+      eyebrow,
+      title,
+      description,
+      ${imageFragment}
+    }
+  }
 `;
 
-const faqAccordionBlock = /* groq */ `
-  _type == "faqAccordion" => {
+const discoverGridBlock = /* groq */ `
+  _type == "discoverGrid" => {
     ...,
-    "eyebrow": coalesce(eyebrow, null),
-    ${faqFragment},
-    link{
-      ...,
+    title,
+    "items": items[]{
+      _key,
+      title,
+      category,
+      subtitle,
+      layout,
+      "brandLogo": brandLogo{
+        ${imageFields}
+      },
+      ${imageFragment},
+      "openInNewTab": link.openInNewTab,
+      "href": select(
+        link.type == "internal" => link.internal->slug.current,
+        link.type == "external" => link.external,
+        "#"
+      )
+    }
+  }
+`;
+
+const statsSectionBlock = /* groq */ `
+  _type == "statsSection" => {
+    ...,
+    title,
+    subtitle,
+    "stats": stats[]{
+      _key,
+      value,
+      label,
+      "logo": logo{
+        ${imageFields}
+      }
+    }
+  }
+`;
+
+const blogSectionBlock = /* groq */ `
+  _type == "blogSection" => {
+    ...,
+    heading,
+    subheading,
+    displayType,
+    postsCount,
+    "posts": select(
+      displayType == "manual" => posts[]->{${blogCardFragment}},
+      *[_type == "blog" && seoHideFromLists != true]
+        | order(orderRank asc)[0...3]{${blogCardFragment}}
+    ),
+    "cta": cta{
+      text,
+      variant,
+      _key,
+      _type,
       "openInNewTab": url.openInNewTab,
       "href": select(
         url.type == "internal" => url.internal->slug.current,
@@ -157,35 +201,17 @@ const faqAccordionBlock = /* groq */ `
   }
 `;
 
-const subscribeNewsletterBlock = /* groq */ `
-  _type == "subscribeNewsletter" => {
+const carouselSectionBlock = /* groq */ `
+  _type == "carouselSection" => {
     ...,
-    "subTitle": subTitle[]{
-      ...,
-      ${markDefsFragment}
-    },
-    "helperText": helperText[]{
-      ...,
-      ${markDefsFragment}
+    title,
+    subtitle,
+    "slides": slides[]{
+      _key,
+      title,
+      subtitle,
+      ${imageFragment}
     }
-  }
-`;
-
-const featureCardsIconBlock = /* groq */ `
-  _type == "featureCardsIcon" => {
-    ...,
-    ${richTextFragment},
-    "cards": array::compact(cards[]{
-      ...,
-      ${richTextFragment},
-    })
-  }
-`;
-
-const richTextBlockFragment = /* groq */ `
-  _type == "richTextBlock" => {
-    ...,
-    ${richTextFragment}
   }
 `;
 
@@ -193,13 +219,13 @@ const pageBuilderFragment = /* groq */ `
   pageBuilder[]{
     ...,
     _type,
-    ${ctaBlock},
-    ${heroBlock},
-    ${faqAccordionBlock},
-    ${featureCardsIconBlock},
-    ${subscribeNewsletterBlock},
-    ${imageLinkCardsBlock},
-    ${richTextBlockFragment}
+    ${heroSectionBlock},
+    ${logoStripBlock},
+    ${featureGridBlock},
+    ${discoverGridBlock},
+    ${statsSectionBlock},
+    ${blogSectionBlock},
+    ${carouselSectionBlock}
   }
 `;
 

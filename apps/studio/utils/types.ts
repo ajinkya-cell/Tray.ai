@@ -155,3 +155,13 @@ export type PathnameParams = Omit<
   name?: string;
   options?: PathnameOptions;
 };
+export type DiscoverItem = {
+  _key: string;
+  layout?: "small" | "wide" | "tall" | "large";
+  title: string;
+  subtitle?: string;
+  image?: any;
+  brandLogo?: any;
+  href?: string;
+  openInNewTab?: boolean;
+};

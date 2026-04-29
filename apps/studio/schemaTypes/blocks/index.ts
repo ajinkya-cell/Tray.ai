@@ -1,17 +1,17 @@
-import { cta } from "@/schemaTypes/blocks/cta";
-import { faqAccordion } from "@/schemaTypes/blocks/faq-accordion";
-import { featureCardsIcon } from "@/schemaTypes/blocks/feature-cards-icon";
-import { hero } from "@/schemaTypes/blocks/hero";
-import { imageLinkCards } from "@/schemaTypes/blocks/image-link-cards";
-import { richTextBlock } from "@/schemaTypes/blocks/rich-text";
-import { subscribeNewsletter } from "@/schemaTypes/blocks/subscribe-newsletter";
+import { blogSection } from "@/schemaTypes/blocks/blog-section";
+import { discoverGrid } from "@/schemaTypes/blocks/discover-grid";
+import { featureGrid } from "@/schemaTypes/blocks/feature-grid";
+import { heroSection } from "@/schemaTypes/blocks/hero-section";
+import { logoStrip } from "@/schemaTypes/blocks/logo-strip";
+import { statsSection } from "@/schemaTypes/blocks/stats-section";
+import { carouselSection } from "@/schemaTypes/blocks/carousel-section";
 
 export const pageBuilderBlocks = [
-  hero,
-  cta,
-  featureCardsIcon,
-  faqAccordion,
-  imageLinkCards,
-  richTextBlock,
-  subscribeNewsletter,
+  heroSection,
+  logoStrip,
+  featureGrid,
+  discoverGrid,
+  statsSection,
+  blogSection,
+  carouselSection,
 ];

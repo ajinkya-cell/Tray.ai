@@ -118,7 +118,7 @@ export function MobileMenu({ navbarData, settingsData }: NavigationData) {
           <SheetFooter className="border-t">
             <SanityButtons
               buttonClassName="w-full justify-center"
-              buttons={buttons || []}
+              buttons={(buttons || []) as Parameters<typeof SanityButtons>[0]["buttons"]}
               className="grid gap-3"
             />
           </SheetFooter>
