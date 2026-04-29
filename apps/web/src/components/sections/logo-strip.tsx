@@ -17,7 +17,7 @@ export function LogoStrip({ logos }: LogoStripProps) {
           100% { transform: translateX(0); }
         }
         .animate-marquee-horizontal {
-          animation: marquee-horizontal-reverse 60s linear infinite;
+          animation: marquee-horizontal-reverse 70s linear infinite;
         }
         .animate-marquee-horizontal:hover {
           animation-play-state: paused;
@@ -48,12 +48,14 @@ export function LogoStrip({ logos }: LogoStripProps) {
                   className="flex shrink-0 items-center opacity-70 transition-opacity duration-400 hover:opacity-100"
                   key={`${logo.id}-${i}`}
                 >
-                  <SanityImage
+                 <div className="scale-90">
+                   <SanityImage
                     className="h-6 w-auto max-w-[100px] object-contain"
                     height={24}
                     image={logo}
                     width={100}
                   />
+                 </div>
                 </li>
               ))}
             </ul>

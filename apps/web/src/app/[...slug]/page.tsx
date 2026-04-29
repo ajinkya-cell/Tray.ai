@@ -7,6 +7,8 @@ import { notFound } from "next/navigation";
 import { PageBuilder } from "@/components/pagebuilder";
 import { getSEOMetadata } from "@/lib/seo";
 
+export const revalidate = 60;
+
 const logger = new Logger("PageSlug");
 
 async function fetchSlugPageData(slug: string) {

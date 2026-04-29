@@ -182,7 +182,7 @@ export function DiscoverGrid({ title, items }: DiscoverGridProps) {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         
         {title && (
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10 text-white">
+          <h2 className="text-3xl text-center md:text-5xl mb-17 font-semibold mb-10 text-white">
             {title}
           </h2>
         )}

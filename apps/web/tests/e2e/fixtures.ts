@@ -3,7 +3,6 @@ import { createClient } from "@sanity/client";
 
 interface SlugPages {
   pages: string[];
-  blogs: string[];
 }
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -33,13 +32,11 @@ function sanitizeSlugs(slugs: string[]): string[] {
 export const test = base.extend<{ slugPages: SlugPages }>({
   slugPages: async ({}, use) => {
     const result = await sanityClient.fetch<SlugPages>(`{
-      "pages": *[_type == "page" && defined(slug.current)].slug.current,
-      "blogs": *[_type == "blog" && defined(slug.current)].slug.current
+      "pages": *[_type == "page" && defined(slug.current)].slug.current
     }`);
 
     await use({
       pages: sanitizeSlugs(result.pages ?? []),
-      blogs: sanitizeSlugs(result.blogs ?? []),
     });
   },
 });

@@ -1,4 +1,3 @@
-import { blogSection } from "@/schemaTypes/blocks/blog-section";
 import { discoverGrid } from "@/schemaTypes/blocks/discover-grid";
 import { featureGrid } from "@/schemaTypes/blocks/feature-grid";
 import { heroSection } from "@/schemaTypes/blocks/hero-section";
@@ -12,6 +11,5 @@ export const pageBuilderBlocks = [
   featureGrid,
   discoverGrid,
   statsSection,
-  blogSection,
   carouselSection,
 ];

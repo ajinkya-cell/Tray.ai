@@ -94,19 +94,27 @@ async function seed() {
         name: "Pricing",
         url: { _type: "customUrl", external: "#", openInNewTab: false, type: "external" },
       },
-      {
-        _key: "link-blog",
-        _type: "navbarLink",
-        name: "Blog",
-        url: { _type: "customUrl", external: "/blog", openInNewTab: false, type: "external" },
-      },
     ],
   };
 
   await client.createOrReplace(navbar);
   console.log("✅ Navbar created with _id: 'navbar'");
 
+  // ── Settings ─────────────────────────────────────────────────────────────────
+  const settings = {
+    _id: "settings",
+    _type: "settings",
+    label: "Settings",
+    siteTitle: "Tray.ai",
+    siteDescription: "The agentic integration platform for enterprise teams. Build, automate, and scale with AI-powered workflows.",
+    socialLinks: {},
+  };
+
+  await client.createOrReplace(settings);
+  console.log("✅ Settings created with _id: 'settings'");
+
   console.log("\n✨ Done! All singletons seeded successfully.");
+
 }
 
 seed().catch((err) => {

@@ -6,7 +6,6 @@ import { createDataAttribute } from "next-sanity";
 import { useCallback, useMemo } from "react";
 
 import type { PageBuilderBlock, PageBuilderBlockTypes } from "@/types";
-import { BlogSection } from "./sections/blog-section";
 import { DiscoverGrid } from "./sections/discover-grid";
 import { FeatureGrid } from "./sections/feature-grid";
 import { HeroSection } from "./sections/hero-section";
@@ -33,7 +32,6 @@ const BLOCK_COMPONENTS = {
   featureGrid: FeatureGrid,
   discoverGrid: DiscoverGrid,
   statsSection: StatsSection,
-  blogSection: BlogSection,
   carouselSection: CarouselSection,
   // biome-ignore lint/suspicious/noExplicitAny: <any is used to allow for dynamic component rendering>
 } as const satisfies Record<PageBuilderBlockTypes, React.ComponentType<any>>;

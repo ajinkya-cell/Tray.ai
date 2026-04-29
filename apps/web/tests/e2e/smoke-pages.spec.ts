@@ -8,12 +8,6 @@ test.describe("Smoke: static routes", { tag: "@smoke" }, () => {
     await expect(page.locator("body")).not.toBeEmpty();
   });
 
-  test("blog index loads", async ({ page }) => {
-    const response = await page.goto("/blog");
-
-    expect(response?.status()).toBe(200);
-    await expect(page.locator("body")).not.toBeEmpty();
-  });
 });
 
 test.describe("Smoke: dynamic slug pages", { tag: "@smoke" }, () => {
@@ -24,7 +18,7 @@ test.describe("Smoke: dynamic slug pages", { tag: "@smoke" }, () => {
   }) => {
     test.setTimeout(5 * 60_000);
 
-    const allSlugs = [...slugPages.pages, ...slugPages.blogs];
+    const allSlugs = [...slugPages.pages];
 
     expect(allSlugs.length).toBeGreaterThan(0);
 

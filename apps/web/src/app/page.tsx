@@ -4,6 +4,8 @@ import { queryHomePageData } from "@workspace/sanity/query";
 import { PageBuilder } from "@/components/pagebuilder";
 import { getSEOMetadata } from "@/lib/seo";
 
+export const revalidate = 60;
+
 async function fetchHomePageData() {
   return await sanityFetch({
     query: queryHomePageData,

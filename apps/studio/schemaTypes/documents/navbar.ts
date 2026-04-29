@@ -152,6 +152,13 @@ export const navbar = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "logo",
+      type: "image",
+      title: "Logo",
+      description: "Upload your site logo — displayed on the left side of the navbar",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "columns",
       type: "array",
       title: "Navigation Structure",

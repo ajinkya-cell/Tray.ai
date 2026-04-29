@@ -48,14 +48,16 @@ export function StatsSection({ title, subtitle, stats }: StatsSectionProps) {
         <div className="bg-[#14133E] border-l border-r border-b border-white/10 py-16 px-4 md:px-10">
         
         {/* Heading */}
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <div className="mx-auto mb-14 max-w-5xl text-center">
           {title && (
-            <h2 className="font-bold text-4xl text-white leading-tight tracking-tight md:text-5xl">
-              {title}
-            </h2>
+            <h2 className="font-semibold text-4xl leading-tight tracking-tight md:text-5xl 
+  bg-gradient-to-r from-white to-gray-500 
+  bg-clip-text text-transparent">
+  {title}
+</h2>
           )}
           {subtitle && (
-            <p className="mt-4 text-slate-400 text-base leading-relaxed">
+            <p className="mt-4 text-slate-200 text-base leading-relaxed">
               {subtitle}
             </p>
           )}
