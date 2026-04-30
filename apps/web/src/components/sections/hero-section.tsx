@@ -28,12 +28,12 @@ export function HeroSection({
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* Left — text content */}
           <div className="flex flex-col gap-6 lg:max-w-xl">
-            <h1 className="text-balance font-semibold text-[51px] text-white leading-[61.2px] tracking-[0.5px]">
+            <h1 className="text-balance font-semibold text-3xl md:text-[51px] text-white leading-snug md:leading-[61.2px] tracking-[0.5px]">
               {heading}
             </h1>
 
             {subheading && (
-              <p className="max-w-md text-[17px] text-slate-400 leading-relaxed">
+              <p className="max-w-md text-sm md:text-[17px] text-slate-400 leading-relaxed">
                 {subheading}
               </p>
             )}

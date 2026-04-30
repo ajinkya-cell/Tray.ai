@@ -102,7 +102,7 @@ function DiscoverCard({ item }: { item: DiscoverItem }) {
               !isLarge && (
                 <h3
                   className="
-                    text-xl md:text-[1.35rem] font-medium leading-snug text-white pr-4
+                    text-lg md:text-[1.35rem] font-medium leading-snug text-white pr-4
                     transition-all duration-300
                     group-hover:-translate-y-1
                   "
@@ -122,7 +122,7 @@ function DiscoverCard({ item }: { item: DiscoverItem }) {
           {item.brandLogo && !isLarge && (
             <h3
               className="
-                text-xl md:text-[1.35rem] font-medium leading-snug text-white pr-4
+                text-lg md:text-[1.35rem] font-medium leading-snug text-white pr-4
                 transition-all duration-300
                 group-hover:-translate-y-1
               "
@@ -145,7 +145,7 @@ function DiscoverCard({ item }: { item: DiscoverItem }) {
             <>
               <h3
                 className="
-                  mb-3 text-2xl md:text-3xl lg:text-[2rem] font-semibold leading-tight text-white max-w-[90%]
+                  mb-3 text-lg md:text-3xl lg:text-[2rem] font-semibold leading-tight text-white max-w-[90%]
                   transition-all duration-300
                   group-hover:-translate-y-2
                 "
@@ -182,7 +182,7 @@ export function DiscoverGrid({ title, items }: DiscoverGridProps) {
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         
         {title && (
-          <h2 className="text-3xl text-center md:text-5xl mb-17 font-semibold mb-10 text-white">
+          <h2 className="text-2xl text-center md:text-5xl mb-10 font-semibold text-white">
             {title}
           </h2>
         )}

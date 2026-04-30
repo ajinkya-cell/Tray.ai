@@ -16,7 +16,7 @@ export function FeatureGrid({ title, features }: FeatureGridProps) {
       <div className="container mx-auto px-4 md:px-6">
         {/* Section heading */}
         {title && (
-          <h2 className="mx-auto max-w-3xl text-balance text-center font-semibold text-white tracking-tight text-[38px] leading-[45.9px]">
+          <h2 className="mx-auto max-w-3xl text-balance text-center font-semibold text-2xl md:text-[38px] text-white tracking-tight leading-[45.9px]">
             {title}
           </h2>
         )}
@@ -37,7 +37,7 @@ export function FeatureGrid({ title, features }: FeatureGridProps) {
                   </span>
                 )}
                 {feature.title && (
-                  <h3 className="font-semibold text-white text-[25px] leading-[25.5px]">
+                  <h3 className="font-semibold text-white text-xl md:text-[25px] leading-[25.5px]">
                     {feature.title}
                   </h3>
                 )}

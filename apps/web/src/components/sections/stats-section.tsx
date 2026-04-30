@@ -50,7 +50,7 @@ export function StatsSection({ title, subtitle, stats }: StatsSectionProps) {
         {/* Heading */}
         <div className="mx-auto mb-14 max-w-5xl text-center">
           {title && (
-            <h2 className="font-semibold text-4xl leading-tight tracking-tight md:text-5xl 
+            <h2 className="font-semibold text-2xl md:text-5xl leading-tight tracking-tight 
   bg-gradient-to-r from-white to-gray-500 
   bg-clip-text text-transparent">
   {title}
@@ -115,7 +115,7 @@ export function StatsSection({ title, subtitle, stats }: StatsSectionProps) {
 
                         {/* Content */}
                         <div className="mt-auto">
-                          <p className="font-semibold text-3xl md:text-4xl text-white leading-none tracking-tight">
+                          <p className="font-semibold text-2xl md:text-4xl text-white leading-none tracking-tight">
                             {stat.value}
                           </p>
                           <p className="mt-2 text-slate-400 text-sm leading-snug">

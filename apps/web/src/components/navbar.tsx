@@ -142,7 +142,7 @@ export function Navbar({
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-3 md:px-6">
 
         {/* Left — Logo */}
-        <div className="flex items-center invert ">
+        <div className="flex items-center scale-78 md:scale-100 invert ">
           {logo ? (
             <Logo
               alt={siteTitle || ""}
