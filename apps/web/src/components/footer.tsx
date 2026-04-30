@@ -17,6 +17,7 @@ import {
   XIcon,
   YoutubeIcon,
 } from "./social-icons";
+import { FooterClient } from "./footer-client";
 
 type SocialLinksProps = {
   data: NonNullable<QueryGlobalSeoSettingsResult>["socialLinks"];
@@ -38,7 +39,7 @@ export async function FooterServer() {
   }
 
   return (
-    <Footer
+    <FooterClient 
       data={response.data}
       settingsData={settingsResponse?.data ?? null}
     />

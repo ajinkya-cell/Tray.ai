@@ -6,11 +6,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { PagebuilderType } from "@/types";
 import { SanityImage } from "../elements/sanity-image";
 import { stegaClean } from "@sanity/client/stega";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 type CarouselSectionProps = PagebuilderType<"carouselSection">;
 
 export function CarouselSection({ title, subtitle, slides }: CarouselSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { ref, isInView } = useScrollReveal();
 
   const safeSlides = slides || [];
   const slideLength = safeSlides.length;
@@ -50,7 +52,13 @@ export function CarouselSection({ title, subtitle, slides }: CarouselSectionProp
   };
 
   return (
-    <section className="bg-transparent py-20 md:py-28 relative overflow-hidden flex flex-col items-center">
+    <motion.section 
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="bg-transparent py-20 md:py-28 relative overflow-hidden flex flex-col items-center"
+    >
       
       {/* Section Heading */}
       {(title || subtitle) && (
@@ -180,6 +188,6 @@ export function CarouselSection({ title, subtitle, slides }: CarouselSectionProp
           </div>
           
         </div>
-    </section>
+    </motion.section>
   );
 }

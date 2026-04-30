@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@workspace/ui/lib/utils";
 import Link from "next/link";
 
@@ -13,8 +17,14 @@ export function HeroSection({
   buttons,
   image,
 }: HeroSectionProps) {
+  const { ref, isInView } = useScrollReveal();
+
   return (
-    <section
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className="relative overflow-hidden bg-transparent py-20 md:py-28"
       id="hero"
     >
@@ -78,6 +88,6 @@ export function HeroSection({
           )}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

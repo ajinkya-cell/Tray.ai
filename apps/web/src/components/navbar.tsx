@@ -142,21 +142,16 @@ export function Navbar({
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-4 px-4 py-3 md:px-6">
 
         {/* Left — Logo */}
-        <div className="flex items-center scale-78 md:scale-100 invert ">
-          {logo ? (
-            <Logo
-              alt={siteTitle || ""}
-              height={36}
-              image={logo}
-              priority
-              width={110}
-            />
-          ) : (
-            <span className="text-lg font-semibold text-white">
-              {siteTitle}
-            </span>
-          )}
-        </div>
+        <div className="flex items-center scale-78 md:scale-100 brightness-0 invert">
+  {logo ? (
+    <Logo alt={siteTitle || ""} height={36} image={logo} priority width={110} />
+  ) : (
+    <span className="text-lg font-semibold text-white">
+      {siteTitle}
+    </span>
+  )}
+</div>
+
 
         {/* Center — Nav links (truly centered via grid) */}
         <nav className="hidden items-center justify-center gap-0.5 md:flex">

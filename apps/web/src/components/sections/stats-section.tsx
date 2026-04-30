@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { PagebuilderType } from "@/types";
 import { SanityImage } from "../elements/sanity-image";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 type StatsSectionProps = PagebuilderType<"statsSection">;
 type Stat = NonNullable<StatsSectionProps["stats"]>[number];
@@ -13,6 +14,7 @@ type Stat = NonNullable<StatsSectionProps["stats"]>[number];
 
 
 export function StatsSection({ title, subtitle, stats }: StatsSectionProps) {
+  const { ref, isInView } = useScrollReveal();
   if (!stats || stats.length === 0) return null;
 
   // Split into 3 columns
@@ -39,8 +41,12 @@ export function StatsSection({ title, subtitle, stats }: StatsSectionProps) {
           animation: marquee-vertical-reverse 30s linear infinite;
         }
       `}} />
-    <section
-      data-sanity="ignore" // 🔥 fixes infinite loop from visual editing
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      data-sanity="ignore"
       className="bg-transparent pb-20 md:pb-28"
       id="stats-section"
     >
@@ -136,7 +142,7 @@ export function StatsSection({ title, subtitle, stats }: StatsSectionProps) {
         </div>
         </div>
       </div>
-    </section>
+    </motion.section>
     </>
   );
 }

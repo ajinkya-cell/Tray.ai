@@ -1,15 +1,24 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import type { PagebuilderType } from "@/types";
 import { SanityImage } from "../elements/sanity-image";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 type FeatureGridProps = PagebuilderType<"featureGrid">;
 
 export function FeatureGrid({ title, features }: FeatureGridProps) {
+  const { ref, isInView } = useScrollReveal();
   if (!features?.length) return null;
 
   return (
-    <section
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className="bg-transparent py-20 md:py-28"
       id="feature-grid"
     >
@@ -76,6 +85,6 @@ export function FeatureGrid({ title, features }: FeatureGridProps) {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

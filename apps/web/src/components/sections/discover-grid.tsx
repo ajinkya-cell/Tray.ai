@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 import type { PagebuilderType } from "@/types";
 import { SanityImage } from "../elements/sanity-image";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
 type DiscoverGridProps = PagebuilderType<"discoverGrid">;
 type DiscoverItem = NonNullable<DiscoverGridProps["items"]>[number];
@@ -175,10 +179,18 @@ function DiscoverCard({ item }: { item: DiscoverItem }) {
 }
 
 export function DiscoverGrid({ title, items }: DiscoverGridProps) {
+  const { ref, isInView } = useScrollReveal();
   if (!items?.length) return null;
 
   return (
-    <section className="bg-transparent pt-20 md:pt-28" id="discover-grid">
+    <motion.section 
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="bg-transparent pt-20 md:pt-28" 
+      id="discover-grid"
+    >
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         
         {title && (
@@ -198,6 +210,6 @@ export function DiscoverGrid({ title, items }: DiscoverGridProps) {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
