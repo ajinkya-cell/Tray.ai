@@ -69,7 +69,7 @@ export function StatsSection({ title, subtitle, stats }: StatsSectionProps) {
             const isReverse = colIndex === 1;
 
             return (
-              <div key={colIndex} className="relative h-[600px] overflow-hidden">
+              <div key={colIndex} className={`relative h-[600px] overflow-hidden ${colIndex > 0 ? "hidden md:block" : ""}`}>
                 
                 {/* Animated column */}
                 <div

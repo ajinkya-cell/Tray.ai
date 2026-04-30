@@ -164,7 +164,7 @@ function Footer({ data, settingsData }: FooterProps) {
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-10 px-4 text-center md:px-6 lg:flex-row lg:text-left">
             
             {Array.isArray(columns) && columns?.length > 0 && (
-              <div className="grid grid-cols-4 gap-6 lg:mr-20 lg:gap-28">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:mr-20 lg:gap-28">
                 {columns.map((column, index) => (
                   <div key={`column-${column?._key}-${index}`}>
                     <h3 className="mb-6 font-semibold">{column?.title}</h3>
