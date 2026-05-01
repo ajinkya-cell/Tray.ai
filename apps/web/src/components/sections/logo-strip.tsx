@@ -6,32 +6,32 @@ type LogoStripProps = PagebuilderType<"logoStrip">;
 export function LogoStrip({ logos }: LogoStripProps) {
   if (!logos?.length) return null;
 
-  // Duplicate logos enough times to ensure smooth scrolling even on ultra-wide screens
-  const duplicatedLogos = Array.from({ length: 6 }).flatMap(() => logos);
+  // Duplicate once for truly seamless infinite loop
+  const duplicatedLogos = [...logos, ...logos];
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes marquee-horizontal-reverse {
-          0% { transform: translate3d(-50%, 0, 0); }
-          100% { transform: translate3d(0, 0, 0); }
+       <style dangerouslySetInnerHTML={{__html: `
+        @keyframes marquee-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         @media (prefers-reduced-motion: reduce) {
           .animate-marquee-horizontal {
             animation: none !important;
           }
         }
+        .marquee-track {
+          min-width: max-content;
+        }
         .animate-marquee-horizontal {
-          animation: marquee-horizontal-reverse 60s linear infinite;
-          will-change: transform;
+          animation: marquee-scroll 30s linear infinite;
+          transform: translateZ(0);
           backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-          perspective: 1000px;
-          -webkit-perspective: 1000px;
         }
         @media (max-width: 768px) {
           .animate-marquee-horizontal {
-            animation-duration: 40s;
+            animation-duration: 20s;
           }
         }
         @media (hover: hover) {
@@ -57,9 +57,9 @@ export function LogoStrip({ logos }: LogoStripProps) {
 
           <div className="flex">
             <ul
-              aria-label="Partner logos"
-              className="flex min-w-max items-center gap-6 sm:gap-12 px-4 sm:px-8 animate-marquee-horizontal"
-            >
+               aria-label="Partner logos"
+               className="marquee-track flex min-w-max items-center gap-6 sm:gap-12 px-4 sm:px-8 animate-marquee-horizontal"
+             >
               {duplicatedLogos.map((logo, i) => (
                 <li
                   className="flex shrink-0 items-center opacity-70 transition-opacity duration-300 hover:opacity-100"
